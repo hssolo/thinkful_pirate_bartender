@@ -6,7 +6,7 @@ def drink_questions():
     'sweet': "Do you like it sweet?", 
     'fruity': "Do you like a fruity finish?"}
     
-    print "What style of drink do you like?"
+    print "\nWhat style of drink do you like?"
 
     preferences = {}
     for x in questions:
@@ -31,21 +31,31 @@ def mixalogist():
     "sweet": ["sugar cube", "spoonful of honey", "spash of cola"],
     "fruity": ["slice of orange", "dash of cassis", "cherry on top"]}
 
-    for x in u_preferences and ingredients:
+    for x in u_preferences and ingredients: # Question: If these two dictionaries didnt have the same sequential keys then how?
         if u_preferences[x] == True:
             u_preferences[x] = random.choice(ingredients[x])
     for x in u_preferences:
         if u_preferences[x] != False:
             (drink_contents.append(u_preferences[x]))
             
-    print ""
-    print "Your drink is ready!\n" 
+    print "\nYour drink is ready!\n" 
     print "Your drink contains:"
     for v in drink_contents: ## took this idea from the sample code
         print "A " + v 
     #print "The drink contents are {}".format(drink_contents)
     
 if __name__ == '__main__':
-    mixalogist()
+    drinking = True
+    while drinking:
+        mixalogist()
+        drink_another = raw_input("\nWould you like another?\n").lower()
+        if drink_another == "yes" or drink_another == "y":
+            drinking = True
+        else:
+            drinking = False
+    print "\nThanks for drinking along, Shall I call you a cab?" 
+            
+    
+    
 
 
