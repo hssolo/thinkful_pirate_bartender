@@ -71,8 +71,8 @@ if __name__ == '__main__':
             dict_drinking_crowd[user_name] = drink_name()
             ask_questions = drink_questions() 
             print "\nYour drink is now ready!\n" 
-            print "testing\n"
-            print user_name
+            print "testing"
+            print user_name +'\n'
             print "It's called the " + dict_drinking_crowd[user_name] ##broken need help
             print dict_drinking_crowd
             print "\nYour drink contains:"
@@ -83,7 +83,7 @@ if __name__ == '__main__':
                 print "\n" + user_name + ", would you like another " + dict_drinking_crowd[user_name] +"?" ##broken need help
                 drink_another = raw_input().lower()
                 if drink_another == "yes" or drink_another == "y":
-                    print "\nYour " + dict_drinking_crowd.values()[0] + " is now ready!\n" 
+                    print "\nYour " + dict_drinking_crowd[user_name] + " is now ready!\n" 
                 elif drink_another != "yes" or drink_another != "y":
                     print "\nThanks for drinking along " + user_name + ", Have a niec day!\n" 
                     sober = False
