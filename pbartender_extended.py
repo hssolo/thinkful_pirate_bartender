@@ -5,10 +5,10 @@ def drink_questions():
     'bitter': "Do you like it bitter?", 
     'sweet': "Do you like it sweet?", 
     'fruity': "Do you like a fruity finish?"}
-    print "\nHello " + users_name + ", What style of drink do you like:"
+    print "\nHello " + user_name + ", What style of drink do you like:"
     preferences = {}
     for x in questions:
-        print questions[x]
+        print questions[x] 
         user_answers = raw_input().lower()
         if user_answers == "yes" or user_answers == 'y':
             user_answers = True
@@ -30,10 +30,9 @@ def mixalogist():
             ask_questions[x] = random.choice(ingredients[x])
     for x in ask_questions:
         if ask_questions[x] != False:
-            (drink_contents.append(ask_questions[x]))# Question: Does it matter if if statements do not have an elif or else statement to go with it?
-    for v in drink_contents: ## took this idea from the sample code
+            (drink_contents.append(ask_questions[x]))
+    for v in drink_contents: 
         print "A " + v 
-    #print "The drink contents are {}".format(drink_contents) Question: hos do we remove commas and parentheses when using this format?
     
 def drink_name():
     list1 = ["Crazy", "Insane", "Fuzzy", "Buzzy", "Wuzzy"]
@@ -48,42 +47,45 @@ if __name__ == '__main__':
     
     while drinking:
         print "Hi there, whats your name?"
-        users_name = raw_input()
-        returning_customer = users_name in dict_drinking_crowd
+        user_name = raw_input().lower()
+        returning_customer = user_name in dict_drinking_crowd
         
         if returning_customer == True:
-            print "Hey there " + users_name + ", would you like your favorite drink?"
+            print "\nWelcome back " + user_name + ", would you like your favorite drink?"
             im_back = raw_input().lower()
+            print dict_drinking_crowd.values()
             if im_back == "yes" or im_back == "y":
-                print "\nYour " + dict_drinking_crowd.values()[0] + " is now ready!\n" 
+                print "\nYour " + dict_drinking_crowd[user_name] + " is now ready!\n" 
                 
                 sober = True
                 while sober:
-                    print "\n" + users_name + ", would you like another " + dict_drinking_crowd.values()[0] +"?"
+                    print "\n" + user_name + ", would you like another " + dict_drinking_crowd[user_name] +"?"
                     drink_another = raw_input().lower()
                     if drink_another == "yes" or drink_another == "y":
-                        print "\nYour " + dict_drinking_crowd.values()[0] + " is now ready!\n" 
+                        print "\nYour " + dict_drinking_crowd[user_name] + " is now ready!\n" 
                     elif drink_another != "yes" or drink_another != "y":
-                        print "\nThanks for drinking along " + users_name + ", Have a niec day!\n" 
+                        print "\nThanks for drinking along " + user_name + ", Have a niec day!\n" 
                         sober = False
                         
         elif returning_customer == False:
-            dict_drinking_crowd[users_name] = drink_name()
-            ask_questions = drink_questions() ## Call to the drink_questions function 
+            dict_drinking_crowd[user_name] = drink_name()
+            ask_questions = drink_questions() 
             print "\nYour drink is now ready!\n" 
-            print "It's called the " + dict_drinking_crowd.values()[0]
+            print "testing\n"
+            print user_name
+            print "It's called the " + dict_drinking_crowd[user_name] ##broken need help
             print dict_drinking_crowd
             print "\nYour drink contains:"
-            mixalogist() ##call to the mixalogist function why does it work somietimes and somwtimes not when you add an argument?
+            mixalogist() 
             
             sober = True
             while sober:
-                print "\n" + users_name + ", would you like another " + dict_drinking_crowd.values()[0] +"?"
+                print "\n" + user_name + ", would you like another " + dict_drinking_crowd[user_name] +"?" ##broken need help
                 drink_another = raw_input().lower()
                 if drink_another == "yes" or drink_another == "y":
                     print "\nYour " + dict_drinking_crowd.values()[0] + " is now ready!\n" 
                 elif drink_another != "yes" or drink_another != "y":
-                    print "\nThanks for drinking along " + users_name + ", Have a niec day!\n" 
+                    print "\nThanks for drinking along " + user_name + ", Have a niec day!\n" 
                     sober = False
             
     
